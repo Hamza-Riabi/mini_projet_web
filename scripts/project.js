@@ -6,21 +6,19 @@ const productIdKey = "product";
 const orderIdKey = "order";
 const inputIdKey = "qte";
 
-// === global variables  ===
+
 // the total cost of selected products 
 var total = 0;
 //HAMZA
 var filteredCatalog = catalog;  
-
 var init = function () {
-    createShop(filteredCatalog); // Affiche les produits filtrés dès le départ
+    createShop(filteredCatalog); // Affiche les produits filtrés dès le départ (au début filteredCatalog=catalog)
     document.getElementById("filter").addEventListener('keyup', filter); // Écouteur pour la barre de recherche
 }
 
 
 window.addEventListener("load", init);
 
-// usefull functions
 
 
 var createShop = function (filteredProducts) {
@@ -118,10 +116,7 @@ var createOrderControlBlock = function (index) {
 	control.appendChild(button);
 
 
-//hamza
-// Gestion du clic sur le bouton de mise en panier
-// Gestion du clic sur le bouton de mise en panier
-// Gestion du clic sur le bouton de mise en panier
+//Hamza
 button.addEventListener("click", function () {
     var qty = parseInt(input.value);
     if (qty > 0) {
@@ -142,24 +137,15 @@ button.addEventListener("click", function () {
             newItem.className = "achat";
             newItem.dataset.qty = qty;
 
-			
-			
-
-			
-
             newItem.innerHTML = `
 			   
 			    <span class="quantite"> ${qty}</span>
                 <span class="name">${catalog[index].name}</span>
                 
                 <span class="prix">${(catalog[index].price * qty)} €</span>
-                <button class="remove" style="
-        
-        cursor: pointer">🗑️</button>
-            `;
-        
-        
-        
+                <button class="remove" style="cursor: pointer">🗑️</button>`;
+            
+   
 			newItem.style.display = "flex";
             newItem.style.alignItems = "center";
             newItem.style.justifyContent = "space-between";
@@ -211,17 +197,13 @@ var updateTotal = function () {
 *
 * TODO : write the correct code
 */
+
 //Hamza
 var createFigureBlock = function (product) {
 	
 	var figure =`<img src="${product.image}"/>`
-
-	
 	return createBlock("figure",figure,"")
 }
-
-
-
 //HAMZA
 function filter() {
     var filterText = document.getElementById("filter").value.toLowerCase();
